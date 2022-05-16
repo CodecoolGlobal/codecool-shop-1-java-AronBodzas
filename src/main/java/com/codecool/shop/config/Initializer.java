@@ -31,12 +31,17 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(lenovo);
 
         //setting up a new product category
-        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        productCategoryDataStore.add(tablet);
+//        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        ProductCategory techno = new ProductCategory("Techno", "Vinyl", "Techno is a genre of electronic dance music (EDM) which is generally produced for use in a continuous DJ set, with tempo often varying between 120 and 150 beats per minute (bpm).");
+        ProductCategory house = new ProductCategory("House", "Vinyl", "House is a genre of electronic dance music characterized by a repetitive four-on-the-floor beat and a typical tempo of 115 to 130 beats per minute.");
+        ProductCategory electronic = new ProductCategory("Electronic", "Vinyl", "electronic music, any music involving electronic processing, such as recording and editing on tape, and whose reproduction involves the use of loudspeakers.");
+        productCategoryDataStore.add(techno);
+        productCategoryDataStore.add(house);
+        productCategoryDataStore.add(electronic);
 
         //setting up products and printing it
-        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
-        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
-        productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
+        productDataStore.add(new Product("I Hate Models -\n Intergalactic Emotional Breakdown", new BigDecimal("25.99"), "EUR", " ", techno, amazon));
+        productDataStore.add(new Product("Four Tet -\n There Is Love In You", new BigDecimal("28.99"), "EUR", " ", house, lenovo));
+        productDataStore.add(new Product("Floating Points -\n Crush", new BigDecimal("30.00"), "EUR", " ",  electronic, amazon));
     }
 }
