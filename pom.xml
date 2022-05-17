@@ -26,6 +26,7 @@
         <sourceDirectory>src/main/java</sourceDirectory>
 
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -45,12 +46,14 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${version.plugin.jetty}</version>
                 <configuration>
-                    <!-- On some configs this causes shutdown of context on -->
-                    <!-- a page load so disabled. -->
-                    <!-- <reload>automatic</reload> -->
-                    <!-- <scanIntervalSeconds>1</scanIntervalSeconds> -->
+                    <httpConnector>
+                        <port>8888</port>
+                    </httpConnector>
+                    <reload>automatic</reload>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
@@ -60,6 +63,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${version.javax.servlet.api}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.17.2</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- See comment at jetty plugin -->
         <!-- <dependency> -->
