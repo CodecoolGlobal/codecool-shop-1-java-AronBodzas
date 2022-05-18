@@ -15,7 +15,6 @@ function addToCart(){
         let prodId = cartButtons[i].getAttribute("data-id")
         cartButtons[i].addEventListener('click',countAndAddCartSize)
         cartButtons[i].addEventListener('click',() => addCart(prodId))
-        console.log(prodId)
     }
 }
 

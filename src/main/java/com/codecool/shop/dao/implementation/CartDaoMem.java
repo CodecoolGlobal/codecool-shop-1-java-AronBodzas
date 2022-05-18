@@ -4,19 +4,25 @@ import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.Product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CartDaoMem implements CartDao {
-    private List<Product> cart = new ArrayList<>();
+    private HashMap<Product, Integer> cart = new HashMap<Product, Integer>();
     private static CartDaoMem instance = null;
 
     @Override
     public void add(Product product) {
-        cart.add(product);
+            if (cart.containsKey(product)){
+                cart.put(product, cart.get(product) + 1);
+            } else {cart.put(product, 1);}
+
+
+
     }
 
     @Override
-    public List<Product> getAll() {
+    public HashMap<Product, Integer> getAll() {
         return cart;
     }
 
