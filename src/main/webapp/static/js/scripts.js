@@ -8,13 +8,13 @@
 
 
 
-let cartList = [];
 let cartButtons = document.getElementsByClassName("add-cart");
+let cartSize = 0;
 
 function addToCart(){
     for (let i = 0; i < cartButtons.length; i++) {
         let prodId = cartButtons[i].getAttribute("data-id")
-        cartButtons[i].addEventListener('click',()=>cartList.push(prodId))
+        cartButtons[i].addEventListener('click',getCartSize)
         cartButtons[i].addEventListener('click',countCartItems)
         cartButtons[i].addEventListener('click',() => addCart(prodId))
         console.log(prodId)
@@ -24,8 +24,9 @@ function addToCart(){
 
 function countCartItems(){
     let countCart = document.getElementById("count-cart")
+    // let cartSize = getCartSize()
     countCart.innerText =''
-    countCart.innerText += " " + cartList.length
+    countCart.innerText += " " + cartSize;
 }
 
 function addCart(prodId){
@@ -36,15 +37,16 @@ function addCart(prodId){
             'Content-Type': 'application/json'
         },
         body: `{
-   "id": ${prodId},
+   "id": ${prodId}
   }`,
     });
-
 }
 
 
-function getCart(){
-
+function getCartSize(){
+    fetch("/cart/size")
+        .then(response => response.text())
+        .then(data => cartSize = data)
 }
 
 
