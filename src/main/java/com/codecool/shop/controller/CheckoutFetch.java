@@ -1,9 +1,10 @@
 package com.codecool.shop.controller;
 
 
-import com.codecool.shop.config.TemplateEngineUtil;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
+import com.codecool.shop.dao.UserDao;
+import com.codecool.shop.dao.implementation.UserDaoMem;
+import com.codecool.shop.model.Address;
+import com.codecool.shop.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,10 +18,13 @@ import java.io.IOException;
 
         @Override
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-            WebContext context = new WebContext(req, resp, req.getServletContext());
-
-            engine.process("product/checkout.html", context, resp.getWriter());
+            UserDao userDataStore = UserDaoMem.getInstance();
+            userDataStore.add(new User(req.getParameter("first_name"
+            ), req.getParameter("last_name"), req.getParameter("phone_number"), req.getParameter("email_address"),
+                    new Address(req.getParameter("country"), req.getParameter("address"), req.getParameter("city"),
+                            req.getParameter("state"), req.getParameter("zip_code"))));
+            System.out.println(userDataStore.getUser(0).getFirstName());
+            resp.sendRedirect("/");
         }
 
     }
