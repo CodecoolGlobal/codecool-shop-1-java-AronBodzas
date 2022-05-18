@@ -1,6 +1,13 @@
 package com.codecool.shop.controller;
 
 
+import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.model.Cart;
+import com.codecool.shop.model.Product;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,10 +28,13 @@ public class CartFetch extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String productDetails = req.getReader().lines().collect(Collectors.joining());
+        ProductDao productDataStore = ProductDaoMem.getInstance();
+        CartDao cartDataStore = CartDaoMem.getInstance();
 
-        System.out.println(productDetails);
+        cartDataStore.add(productDataStore.find(1));
+
+        System.out.println(cartDataStore.getAll());
     }
 
 //    @Override

@@ -32,6 +32,44 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     </div>
 </nav>
+<div class="col mb-5" th:each="prod,iterStat :  ${products}">
+    <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" th:attr="src='static/img/product_' + ${prod.id} + '.jpg'" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder" th:text="${prod.name}">Product name</h5>
+                <p th:text="${prod.productCategory.name}"></p>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                </div>
+                <!-- Product price-->
+                <p th:text="${prod.defaultPrice} +'  ' + ${prod.defaultCurrency}">price</p>
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto add-cart" th:data-id="${prod.id}">Add to cart</a></div>
+            <!--                                play stop-->
+            <div id="carouselButtons">
+                <button id="playButton" type="button" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-play"></span>
+                </button>
+                <button id="pauseButton" type="button" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-pause"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!-- Footer-->
 <footer class="py-5 bg-dark">
