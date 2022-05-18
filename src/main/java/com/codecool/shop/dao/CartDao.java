@@ -10,4 +10,6 @@ public interface CartDao {
     void add(Product product);
 
     HashMap<Product, Integer> getAll();
+
+    public int getItemQty();
 }

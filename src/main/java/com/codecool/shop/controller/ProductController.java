@@ -34,7 +34,7 @@ public class ProductController extends HttpServlet {
         context.setVariable("category", productService.getProductCategory(1));
         context.setVariable("products", productService.getAllProducts());
         CartDao cartDataStore = CartDaoMem.getInstance();
-        int cartSize = cartDataStore.getAll().size();
+        int cartSize = cartDataStore.getItemQty();
         context.setVariable("cartSize", cartSize);
 
         // // Alternative setting of the template context
