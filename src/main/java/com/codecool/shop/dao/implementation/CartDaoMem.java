@@ -33,7 +33,16 @@ public class CartDaoMem implements CartDao {
         return instance;
     }
 
-    public int getItemQty(){
+    public void setItemQty(Product product, int i){
+        for (Product prod: cart.keySet()){
+            if (prod == product){
+                cart.put(product, cart.get(product) + i);
+            }
+        }
+
+    }
+
+    public int getAllItemQty(){
         int quantity = 0;
         for (Integer qty: cart.values()){
             quantity+=qty;

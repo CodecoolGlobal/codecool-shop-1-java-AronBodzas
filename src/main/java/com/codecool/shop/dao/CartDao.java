@@ -3,7 +3,6 @@ package com.codecool.shop.dao;
 import com.codecool.shop.model.Product;
 
 import java.util.HashMap;
-import java.util.List;
 
 public interface CartDao {
 
@@ -11,5 +10,7 @@ public interface CartDao {
 
     HashMap<Product, Integer> getAll();
 
-    public int getItemQty();
+    public int getAllItemQty();
+
+    public void setItemQty(Product product, int i);
 }

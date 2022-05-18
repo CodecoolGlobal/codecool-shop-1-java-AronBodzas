@@ -53,5 +53,8 @@ function addCart(prodId){
 }
 
 
+
+
+
 addToCart()
 
