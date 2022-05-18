@@ -33,7 +33,9 @@ public class ProductController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("category", productService.getProductCategory(1));
         context.setVariable("products", productService.getAllProducts());
-
+        CartDao cartDataStore = CartDaoMem.getInstance();
+        int cartSize = cartDataStore.getAll().size();
+        context.setVariable("cartSize", cartSize);
 
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();

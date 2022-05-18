@@ -9,25 +9,36 @@
 
 
 let cartButtons = document.getElementsByClassName("add-cart");
-let cartSize = 0;
-
+let cartSize = 0
 function addToCart(){
     for (let i = 0; i < cartButtons.length; i++) {
         let prodId = cartButtons[i].getAttribute("data-id")
-        cartButtons[i].addEventListener('click',getCartSize)
-        cartButtons[i].addEventListener('click',countCartItems)
+        cartButtons[i].addEventListener('click',countAndAddCartSize)
         cartButtons[i].addEventListener('click',() => addCart(prodId))
         console.log(prodId)
     }
 }
 
-
-function countCartItems(){
-    let countCart = document.getElementById("count-cart")
-    // let cartSize = getCartSize()
-    countCart.innerText =''
-    countCart.innerText += " " + cartSize;
+async function getCartSize(){
+    await fetch("/cart/size")
+        .then(response => response.text())
+        .then(data => cartSize = data)
 }
+
+
+function addToHtml(){
+
+    let countCart = document.getElementById("count-cart")
+    let realSize = parseInt(cartSize)+1
+    countCart.innerText =''
+    countCart.innerText += " " + realSize;
+}
+
+async function countAndAddCartSize(){
+    await getCartSize()
+        addToHtml()
+}
+
 
 function addCart(prodId){
     fetch("/cart/item", {
@@ -40,13 +51,6 @@ function addCart(prodId){
    "id": ${prodId}
   }`,
     });
-}
-
-
-function getCartSize(){
-    fetch("/cart/size")
-        .then(response => response.text())
-        .then(data => cartSize = data)
 }
 
 
