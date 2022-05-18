@@ -26,7 +26,7 @@ public class CartFetch extends HttpServlet {
         String productDetails = req.getReader().lines().collect(Collectors.joining());
         JsonObject jsonObject = new JsonParser().parse(productDetails).getAsJsonObject();
         String id = jsonObject.get("id").toString();
-        System.out.println(id);
+//        System.out.println(id);
 
         ProductDao productDataStore = ProductDaoMem.getInstance();
         CartDao cartDataStore = CartDaoMem.getInstance();
