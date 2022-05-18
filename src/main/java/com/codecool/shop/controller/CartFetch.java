@@ -31,35 +31,9 @@ public class CartFetch extends HttpServlet {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         CartDao cartDataStore = CartDaoMem.getInstance();
 
-        cartDataStore.add(productDataStore.find(1));
+        cartDataStore.add(productDataStore.find(Integer.parseInt(id)));
 
-//        System.out.println(cartDataStore.getAll());
     }
 
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        // Setting respone content type
-//        resp.setContentType("application/json");
-//        resp.setCharacterEncoding("UTF-8");
-//        // Asking for query parameter
-//        String product = req.getParameter("product");
-//        URL url;
-//        // Checking if there was any query parameter
-//
-////        url = new URL();
-//
-//        // Setting up connection with the hacker api
-//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//        con.setRequestMethod("GET");
-//        // getting the input Buffer from the connection
-//        BufferedReader in = new BufferedReader(
-//                new InputStreamReader(con.getInputStream()));
-//        String inputLine;
-//        // Adding the lines to the string builder to build the json response as a string
-//        StringBuilder content = new StringBuilder();
-//        while ((inputLine = in.readLine()) != null) {
-//            content.append(inputLine);
-//        }
-//        in.close();
-//}
+
 }
