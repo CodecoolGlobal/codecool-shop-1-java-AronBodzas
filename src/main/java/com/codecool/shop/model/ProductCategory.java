@@ -29,6 +29,17 @@ public class ProductCategory extends BaseModel {
         return this.products;
     }
 
+    public List<Product> getProductsById(int id) {
+        List<Product> productsById = new ArrayList<>();
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id){
+                productsById.add(products.get(i));
+            }
+        }
+        return productsById;
+    }
+
+
     public void addProduct(Product product) {
         this.products.add(product);
     }

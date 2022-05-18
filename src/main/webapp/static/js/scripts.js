@@ -6,9 +6,52 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-$('#playButton').click(function () {
-    $('#homeCarousel').carousel('cycle');
-});
-$('#pauseButton').click(function () {
-    $('#homeCarousel').carousel('pause');
-});
+
+
+let cartButtons = document.getElementsByClassName("add-cart");
+let cartSize = 0
+function addToCart(){
+    for (let i = 0; i < cartButtons.length; i++) {
+        let prodId = cartButtons[i].getAttribute("data-id")
+        cartButtons[i].addEventListener('click',countAndAddCartSize)
+        cartButtons[i].addEventListener('click',() => addCart(prodId))
+    }
+}
+
+async function getCartSize(){
+    await fetch("/cart/size")
+        .then(response => response.text())
+        .then(data => cartSize = data)
+}
+
+
+function addToHtml(){
+
+    let countCart = document.getElementById("count-cart")
+    let realSize = parseInt(cartSize)+1
+    countCart.innerText =''
+    countCart.innerText += " " + realSize;
+}
+
+async function countAndAddCartSize(){
+    await getCartSize()
+        addToHtml()
+}
+
+
+function addCart(prodId){
+    fetch("/cart/item", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: `{
+   "id": ${prodId}
+  }`,
+    });
+}
+
+
+addToCart()
+
