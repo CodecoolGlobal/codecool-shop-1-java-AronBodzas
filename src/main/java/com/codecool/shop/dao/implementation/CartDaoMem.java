@@ -40,4 +40,20 @@ public class CartDaoMem implements CartDao {
         }
         return quantity;
     }
+
+    @Override
+    public float sumPrice() {
+        float sum = 0;
+        String price;
+        for(Product product : cart.keySet()){
+            price = product.getPrice();
+            sum += Float.parseFloat(price.split(" ")[0])*cart.get(product);
+        }
+        return sum;
+    }
+
+    @Override
+    public void emptyCart() {
+        cart = new HashMap<>();
+    }
 }
