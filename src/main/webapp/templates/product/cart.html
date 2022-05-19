@@ -46,7 +46,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading" >
                         Review Order <div class="pull-right">
-                        <h7  th:text="'Full Price: '+ ${fullPrice}+'EUR'"></h7>
+                        <h7 id="full-price" th:text="'Full Price: '+ ${fullPrice}+'EUR'"></h7>
                     </div>
                     </div>
                     <div class="panel-body review-order" th:each="prod :  ${products} ">
