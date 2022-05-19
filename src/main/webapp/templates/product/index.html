@@ -78,7 +78,7 @@
                     <div class="col mb-5" th:each="prod,iterStat :  ${products} " id="products" th:data-category="${prod.productCategory.name}" th:data-supplier="${prod.supplier.name}">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" th:attr="src='static/img/product_' + ${prod.id} + '.jpg'" alt="..." />
+                            <button class="btn btn-default btn-xs" name="playmusic" th:data="${prod.id}"><img class="card-img-top" th:attr="src='static/img/product_' + ${prod.id} + '.jpg'" alt="..." /></button>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center" >
@@ -128,6 +128,8 @@
         <!-- Core theme JS-->
         <script src="static/js/scripts.js"></script>
         <script src="static/js/sortBySupplier.js"></script>
+        <script src="static/js/playMusic.js"></script>
+
 
 
     </body>
