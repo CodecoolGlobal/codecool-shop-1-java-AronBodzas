@@ -40,12 +40,16 @@ async function getItems(){
 
 function buildCart(plusMinus, products){
     let div = document.getElementsByClassName("quantity")
+    let priceDiv = document.getElementById("full-price")
+    let fullPrice = 0;
 
     for (let i = 0; i < div.length; i++) {
         let qty = products[i].quantity
         div[i].innerHTML = "Quantity: " + qty
+        fullPrice += products[i].price * qty
 
     }
+    priceDiv.innerHTML = "Full price: " + Math.round(fullPrice * 100) / 100 +" EUR"
 
 
     // let div = document.getElementsByClassName("review-order")[0]
