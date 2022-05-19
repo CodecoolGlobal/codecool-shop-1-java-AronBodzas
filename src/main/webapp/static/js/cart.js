@@ -49,6 +49,7 @@ function buildCart(plusMinus, products){
         fullPrice += products[i].price * qty
 
     }
+
     priceDiv.innerHTML = "Full price: " + Math.round(fullPrice * 100) / 100 +" EUR"
 
 
