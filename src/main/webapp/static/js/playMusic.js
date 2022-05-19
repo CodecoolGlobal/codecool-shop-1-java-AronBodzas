@@ -4,6 +4,7 @@ function playMusic(album){
     let albumId = album.getAttribute('data');
     audio = new Audio(`static/music/music_${albumId}.mp3`);
     console.log(albumId);
+    audio.currentTime=60;
     audio.play();
 }
 
