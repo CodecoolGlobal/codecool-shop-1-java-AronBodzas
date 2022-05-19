@@ -44,8 +44,10 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                 <!--REVIEW ORDER-->
                 <div class="panel panel-info">
-                    <div class="panel-heading">
-                        Review Order <div class="pull-right"></div>
+                    <div class="panel-heading" >
+                        Review Order <div class="pull-right">
+                        <h7  th:text="'Full Price: '+ ${fullPrice}+'EUR'"></h7>
+                    </div>
                     </div>
                     <div class="panel-body review-order" th:each="prod :  ${products} ">
                         <div class="form-group">
@@ -65,7 +67,6 @@
                             </div>
                             <div class="col-sm-3 col-xs-3 text-right">
                                 <h6 th:text="${prod.key.defaultPrice} +'  ' + ${prod.key.defaultCurrency}"></h6>
-                                <h7  th:text="${fullPrice}"></h7>
 
                             </div>
                         </div>
