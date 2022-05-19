@@ -16,7 +16,7 @@ public class cartSize extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CartDao cartDataStore = CartDaoMem.getInstance();
-        int cartSize = cartDataStore.getItemQty();
+        int cartSize = cartDataStore.getAllItemQty();
         resp.getOutputStream().print(cartSize);
     }
 }
