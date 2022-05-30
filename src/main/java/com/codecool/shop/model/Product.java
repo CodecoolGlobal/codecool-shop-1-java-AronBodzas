@@ -7,8 +7,8 @@ public class Product extends BaseModel {
 
     private BigDecimal defaultPrice;
     private Currency defaultCurrency;
-    private ProductCategory productCategory;
-    private Supplier supplier;
+    private transient ProductCategory productCategory;
+    private transient Supplier supplier;
 
 
     public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
@@ -35,7 +35,7 @@ public class Product extends BaseModel {
     }
 
     public String getPrice() {
-        return String.valueOf(this.defaultPrice) + " " + this.defaultCurrency.toString();
+        return String.valueOf(this.defaultPrice);
     }
 
     public void setPrice(BigDecimal price, String currency) {
@@ -76,4 +76,5 @@ public class Product extends BaseModel {
                 this.productCategory.getName(),
                 this.supplier.getName());
     }
+
 }
